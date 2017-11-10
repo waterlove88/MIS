@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.waterlove88.mis.common.model.ResultMaster;
-import com.waterlove88.mis.login.model.LoginInfo;
+import com.waterlove88.mis.login.info.LoginInfo;
 
 /**
  * 로그인 controller

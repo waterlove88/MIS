@@ -1,4 +1,4 @@
-package com.waterlove88.mis.login.model;
+package com.waterlove88.mis.login.info;
 
 import javax.validation.constraints.Pattern;
 

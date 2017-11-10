@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/member")
 public class MemberController {
+
+	/*
+	 * get member info
+	 */
+	
 	/*
 	 * email auth
 	 */
