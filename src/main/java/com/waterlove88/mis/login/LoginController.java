@@ -10,10 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.waterlove88.mis.common.model.ResultMaster;
 import com.waterlove88.mis.login.model.LoginInfo;
 
+/**
+ * 로그인 controller
+ * RestController로 데이터를 반환
+ * 
+ * @author waterlove88 
+ * 2017. 11. 10
+ */
 @RestController
 @RequestMapping("/login")
 public class LoginController {
 	
+	/*
+	 * login
+	 * 동시 로그인 제한
+	 */
 	@PostMapping("")
 	public ResultMaster login(@Valid LoginInfo loginInfo, BindingResult bindingResult) {		
 		if(bindingResult.hasErrors()) {
@@ -22,4 +33,21 @@ public class LoginController {
 		
 		return new ResultMaster("200", "success");
 	}
+	
+	/*
+	 * logout
+	 */
+	
+	/*
+	 * join
+	 */
+	
+	/*
+	 * get login histroy
+	 */
+	
+	/*
+	 * 2nd login
+	 * 추가 비밀번호 로그인
+	 */
 }

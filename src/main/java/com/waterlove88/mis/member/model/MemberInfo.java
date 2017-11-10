@@ -2,6 +2,12 @@ package com.waterlove88.mis.member.model;
 
 import java.sql.Date;
 
+/**
+ * 회원정보 클래스
+ *  
+ * @author waterlove88 
+ * 2017. 11. 10
+ */
 public class MemberInfo {
 	protected Integer memNo; // 회원번호
 	protected String id; // 아이디

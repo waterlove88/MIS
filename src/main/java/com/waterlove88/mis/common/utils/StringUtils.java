@@ -5,6 +5,13 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 스트링 관련 유틸 클래
+ * 어디선가에서 퍼옴, 사용하지 않거나 필요없는 메소드 삭제 예정
+ *  
+ * @author waterlove88 
+ * 2017. 11. 10
+ */
 public class StringUtils {
 	public static String TCD_POC = "0";
 

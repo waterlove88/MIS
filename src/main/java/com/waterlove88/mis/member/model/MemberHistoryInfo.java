@@ -2,6 +2,12 @@ package com.waterlove88.mis.member.model;
 
 import java.sql.Date;
 
+/**
+ * 회원정보 히스토리 클래스
+ *  
+ * @author waterlove88 
+ * 2017. 11. 10
+ */
 public class MemberHistoryInfo {
 	private Integer memHisNo; // 회원이력번호
 	private Integer memNo; // 회원번호

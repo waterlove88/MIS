@@ -1,5 +1,11 @@
 package com.waterlove88.mis.member.model;
 
+/**
+ * 비밀번호 클래스
+ *  
+ * @author waterlove88 
+ * 2017. 11. 10
+ */
 public class PasswordInfo {
 	private Integer memNo; // 회원번호
 	private String password; // 비밀번호

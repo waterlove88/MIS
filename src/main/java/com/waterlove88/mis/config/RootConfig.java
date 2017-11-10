@@ -4,6 +4,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+/**
+ * 환경설정 클래스
+ * 
+ * @author waterlove88 
+ * 2017. 11. 10
+ */
 @Configuration
 @ComponentScan(basePackages = { "com.waterlove.mis" })
 @PropertySource("classpath:properties/${spring.profiles.active}/application.properties")

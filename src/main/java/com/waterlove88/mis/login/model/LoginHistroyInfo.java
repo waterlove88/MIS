@@ -2,6 +2,12 @@ package com.waterlove88.mis.login.model;
 
 import java.sql.Date;
 
+/**
+ * 로그인 히스토리 클래스
+ *  
+ * @author waterlove88 
+ * 2017. 11. 10
+ */
 public class LoginHistroyInfo {
 	private Integer loginHisNo; // 로그인이력번호
 	private Integer memNo; // 회원번호

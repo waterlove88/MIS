@@ -9,7 +9,13 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
-// web.xml을 대체
+/**
+ * web.xml 클래스
+ * xml 기반의 web.xml을 대체한다
+ * 
+ * @author waterlove88 
+ * 2017. 11. 10
+ */
 public class WebInitializer implements WebApplicationInitializer {
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
