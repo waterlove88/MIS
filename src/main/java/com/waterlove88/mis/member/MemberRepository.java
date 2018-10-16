@@ -1,5 +1,9 @@
 package com.waterlove88.mis.member;
 
-public class MemberRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.waterlove88.mis.member.entity.Member;
+
+public interface MemberRepository extends JpaRepository<Member, Integer> {
 
 }

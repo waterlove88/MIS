@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
  * @author waterlove88 
  * 2017. 11. 10
  */
-public class LoginInfo {
+public class Login {
 	
 	// 5~20자 사이 영문소문자 또는 영문소문자+숫자(첫글자는 반드시 영문소문자)
 	@Pattern(regexp="^[a-z]+[a-z0-9]{4,19}$")

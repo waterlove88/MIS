@@ -1,7 +1,22 @@
 package com.waterlove88.mis.member;
 
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.waterlove88.mis.common.model.ResultMaster;
+import com.waterlove88.mis.member.entity.Member;
+import com.waterlove88.mis.member.request.JoinRequest;
 
 /**
  * 회원 controller
@@ -13,32 +28,50 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/member")
 public class MemberController {
-
-	/*
-	 * get member info
-	 */
+	
+	Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
+	@Autowired
+	MemberRepository memberRepository;
 	
 	/*
-	 * email auth
+	 * get member
 	 */
-
-	/*
-	 * update member info
-	 */
+	@GetMapping("/{memNo}")
+	public ResultMaster getMember(@PathVariable Integer memNo) {
+		logger.info("get member : "+memNo);
+		
+		ResultMaster resultMaster;
+		Optional<Member> member = memberRepository.findById(memNo);
+		
+		if(member.isPresent()) {
+			resultMaster = new ResultMaster("200", "success");
+			resultMaster.setBody(member.get());			
+			return resultMaster;
+		}
+		
+		return new ResultMaster("1002", "failure");
+	}
 	
 	/*
-	 * search id
+	 * join member
 	 */
-	
-	/*
-	 * init password
-	 */
-	
-	/*
-	 * set 2nd password
-	 */
-	
-	/*
-	 * init 2nd password
-	 */
+	@PostMapping("")
+	public ResultMaster join(@Valid JoinRequest joinRequest, BindingResult bindingResult) {		
+		logger.info("join member : "+joinRequest.toString());
+		
+		if(bindingResult.hasErrors()) {
+			return new ResultMaster("1001", "Bad request");
+		}
+		
+		try {
+			memberRepository.save(joinRequest.setMemberEntity());
+		} catch (Exception e) {
+			logger.error("join member error : "+e.getCause().toString(), e);
+			return new ResultMaster("1002", "failure");
+		}
+		
+		return new ResultMaster("200", "success");
+		
+	}
 }

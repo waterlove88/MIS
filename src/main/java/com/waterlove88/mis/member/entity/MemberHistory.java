@@ -1,4 +1,4 @@
-package com.waterlove88.mis.member.model;
+package com.waterlove88.mis.member.entity;
 
 import java.sql.Date;
 
@@ -8,7 +8,7 @@ import java.sql.Date;
  * @author waterlove88 
  * 2017. 11. 10
  */
-public class MemberHistoryInfo {
+public class MemberHistory {
 	private Integer memHisNo; // 회원이력번호
 	private Integer memNo; // 회원번호
 	private String memHisCode; // 수정코드 (1:이메일인증, 2:비밀번호 오류초과, 3:비밀번호 초기화, 4:휴면전환, 5:휴면해제, 6:기타정지, 7:기타정지해제)
