@@ -1,5 +1,6 @@
 package com.waterlove88.mis.member;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -40,6 +41,16 @@ public class MemberController {
 	@GetMapping("/{memNo}")
 	public ResultMaster getMember(@PathVariable Integer memNo) {
 		logger.info("get member : "+memNo);
+		
+//		StandardPBEStringEncryptor jasypt = new StandardPBEStringEncryptor();
+//        jasypt.setPassword("m2sj");      //암호화 키(password)
+//        jasypt.setAlgorithm("PBEWithMD5AndDES");
+// 
+//        String encryptedText = jasypt.encrypt("tiger");    //암호화
+//        String plainText = jasypt.decrypt(encryptedText);  //복호화
+// 
+//        System.out.println("encryptedText:  " + encryptedText); //암호화된 값
+//        System.out.println("plainText:  " + plainText);
 		
 		ResultMaster resultMaster;
 		Optional<Member> member = memberRepository.findById(memNo);
