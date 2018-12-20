@@ -7,5 +7,6 @@ import com.waterlove88.mis.entity.member.Member;
 public interface MemberRepository extends JpaRepository<Member, Integer> {
 
 	Member findByid(String id);
+	Member findBymemberSeq(Integer memberSeq);
 	
 }

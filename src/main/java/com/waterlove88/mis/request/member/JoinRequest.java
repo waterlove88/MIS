@@ -3,8 +3,6 @@ package com.waterlove88.mis.request.member;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.waterlove88.mis.common.utils.EncryptionUtils;
 import com.waterlove88.mis.entity.member.Member;
 
@@ -14,9 +12,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 public class JoinRequest {
-	
-	@Autowired
-	private EncryptionUtils encryptionUtils = new EncryptionUtils();
 	
 	// 5~20자 사이 영문소문자 또는 영문소문자+숫자(첫글자는 반드시 영문소문자)
 	@Email(message = "아이디를 확인해주세요.")
@@ -42,7 +37,7 @@ public class JoinRequest {
 				.birth(birth)
 				.nickName(nickName)
 				.joinPath(joinPath)
-				.password(encryptionUtils.encode(password))
+				.password(new EncryptionUtils().encode(password))
 				.build();
 	}
 	

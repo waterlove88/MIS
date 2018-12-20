@@ -2,6 +2,7 @@ package com.waterlove88.mis.common.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 /**
  * 암호화 클래스
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * 2017. 11. 10
  */
 
+@Component
 public class EncryptionUtils implements PasswordEncoder {
 	private PasswordEncoder passwordEncoder;
 	

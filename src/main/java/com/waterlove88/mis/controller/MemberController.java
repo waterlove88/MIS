@@ -2,8 +2,6 @@ package com.waterlove88.mis.controller;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +13,9 @@ import com.waterlove88.mis.common.model.ResultMaster;
 import com.waterlove88.mis.request.member.JoinRequest;
 import com.waterlove88.mis.service.MemberService;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 회원 controller
  * RestController로 데이터를 반환
@@ -22,29 +23,25 @@ import com.waterlove88.mis.service.MemberService;
  * @author waterlove88 
  * 2017. 11. 10
  */
+@Slf4j
 @RestController
+@AllArgsConstructor
 @RequestMapping("/member")
 public class MemberController {
 	
-	Logger logger = LoggerFactory.getLogger(MemberController.class);
-	
 	private MemberService memberService;
-	
-	public MemberController(MemberService memberService) {
-        this.memberService = memberService;
-    }
 	
 	/*
 	 * get member
 	 */
 	@GetMapping("/{memNo}")
-	public ResultMaster get(@PathVariable Integer memNo) {
-		logger.info("get member : "+memNo);
+	public ResultMaster get(@PathVariable Integer memberSeq) {
+		log.info("get member : "+memberSeq);
 		
 		try {
-			return memberService.get(memNo);
+			return memberService.get(memberSeq);
 		} catch (Exception e) {
-			logger.error("join member error : "+e.getCause().toString(), e);
+			log.error("join member error : "+e.getCause().toString(), e);
 			return new ResultMaster("1002", "failure");
 		}
 	}
@@ -54,18 +51,16 @@ public class MemberController {
 	 */
 	@PostMapping("")
 	public ResultMaster join(@Valid JoinRequest joinRequest, BindingResult bindingResult) {		
-		logger.info("join member : "+joinRequest.toString());
+		log.info("join member : "+joinRequest.toString());
 		
 		if(bindingResult.hasErrors()) {
-			return new ResultMaster("2001", "Bad request");
+			return new ResultMaster("1001", "Bad request");
 		}
 		
 		try {
-			logger.info("aaa : "+joinRequest.setMemberEntity().toString());
-			
 			return memberService.join(joinRequest.setMemberEntity());
 		} catch (Exception e) {
-			logger.error("join member error : "+e.getCause().toString(), e);
+			log.error("join member error : "+e.getCause().toString(), e);
 			return new ResultMaster("1002", "failure");
 		}
 	}

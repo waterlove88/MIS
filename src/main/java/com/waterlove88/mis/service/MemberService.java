@@ -1,8 +1,7 @@
 package com.waterlove88.mis.service;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.waterlove88.mis.common.model.ResultMaster;
 import com.waterlove88.mis.entity.member.Member;
@@ -19,27 +18,26 @@ public class MemberService {
 	public ResultMaster join(Member member) {
 		try {
 			memberRepository.save(member);
+			return new ResultMaster("1000", "success");
 		} catch (Exception e) {
 			return new ResultMaster("1002", "failure");
 		}
-		
-		return new ResultMaster("2000", "success");
 	}
 	
-	public ResultMaster get(Integer memNo) {
+	public ResultMaster get(Integer memberSeq) {
 		try {
 			ResultMaster resultMaster;
-			Optional<Member> member = memberRepository.findById(memNo);
+			Member member = memberRepository.findBymemberSeq(memberSeq);
 			
-			if(member.isPresent()) {
-				resultMaster = new ResultMaster("2000", "success");
-				resultMaster.setBody(member.get());			
+			if(!StringUtils.isEmpty(member)) {
+				resultMaster = new ResultMaster("1000", "success");
+				resultMaster.setBody(member);			
 				return resultMaster;
 			}
+			
+			return new ResultMaster("1002", "no selet");
 		} catch (Exception e) {
-			return new ResultMaster("1002", "failure");
+			return new ResultMaster("1003", "failure");
 		}
-		
-		return new ResultMaster("1002", "failure");
 	}
 }
